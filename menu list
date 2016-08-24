@@ -1,0 +1,24 @@
+menu list
+dev
+	[ ] group
+	[ ] controller
+	[ ] menu
+	[ ] user management
+
+admin
+	[v] user management
+	[v] arrival management
+		[ ] still lagging cause fetching all data
+	[v] cabor management
+	[ ] participant management
+	[v] ledging management
+	[v] allocation management
+		[ ] error on list
+	[v] room management
+	[ ] kitchen management
+	[ ] catering management
+	[ ] menus management
+	[ ] venues management
+
+operator
+	

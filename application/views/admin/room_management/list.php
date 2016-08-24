@@ -1,0 +1,67 @@
+	<div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <!-- /.box-header -->
+            <div class="box-body">
+				<a href="<?php echo base_url('index.php/' . $this->sys_user->user_data()->group_name . '/room_management/add'); ?>" class="btn btn-primary" ><i class="glyphicon glyphicon-plus"></i> Tambah</a>
+<br/>
+<br/>
+
+<table class="table table-hover" id="maintable">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Penginapan</th>
+			<th>Kamar</th>
+			<th>Kontingen</th>
+			<th>Untuk</th>
+			<th>Kapasitas</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php 
+			$i = 0;
+			foreach($q->result() as $item): 
+			$i++;
+		?>
+		<tr>
+			<td><?php echo $i; ?></td>
+			<td><?php echo $item->allocation; ?></td>
+			<td><?php echo $item->name; ?></td>
+			<td><?php echo $item->contingent; ?></td>
+			<td><?php  if($item->gender == "Male"){ echo "Pria";}elseif($item->gender == "Female") {echo "Wanita";} ?></td>
+			<td><?php echo $item->capacity; ?></td>
+			<td>
+				<div class="btn-group">
+					<a href="<?php echo base_url('index.php/' . $this->sys_user->user_data()->group_name . '/room_management/edit/' . $item->id); ?>" class="btn btn-warning" ><i class=""></i>Ubah</a>
+					<a href="" class="btn btn-danger" onclick="javascript:_delete(<?php echo $item->id; ?>, '<?php echo $item->id; ?>');return false;">Hapus</a>
+				</div>
+			</td>
+		</tr>
+		<?php endforeach; ?>
+	</tbody>
+</table>
+</div>
+        </div>
+      </div>
+</div>  
+
+<script type="text/javascript">
+	
+	function _edit(id, title){
+		var url = '<?php echo base_url('index.php/' . $this->sys_user->user_data()->group_name . '/room_management/edit'); ?>/' + id;
+		popup(url, 'edit: ' + title, 300, 400);
+		
+		return false;
+	}
+	
+	function _delete(id, title){
+		var url = '<?php echo base_url('index.php/' . $this->sys_user->user_data()->group_name . '/room_management/del'); ?>/' + id;
+		if(confirm('Are you sure want to delete "' + title + '"?')){
+			window.location = url;
+		}
+		
+		return false;
+	}
+</script>
